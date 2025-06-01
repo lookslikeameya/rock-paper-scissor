@@ -10,10 +10,10 @@ function getRandomInt(min, max) {
   
   return Math.floor(Math.random() * (max - min) + min); 
 }
-function getHumanChoice(){
-    let choice= parseInt(prompt("choose 0:rock , 1:paper, 2:scissor"));
-    humanchoice=choices[choice];
-}
+// function getHumanChoice(){
+//     let choice= parseInt(prompt("choose 0:rock , 1:paper, 2:scissor"));
+//     humanchoice=choices[choice];
+// }
 function decide(x,y){
 
     if (x=='paper' && y=='rock'){
@@ -49,20 +49,59 @@ function decide(x,y){
    
 };
 
-function playGame(){
-    for(let i=0;i<5;i++){
-        getComputerChoice();
-        getHumanChoice();
-        decide(humanchoice,computerchoice);
+// function playGame(){
+//     for(let i=0;i<5;i++){
+//         getComputerChoice();
+//         getHumanChoice();
+//         decide(humanchoice,computerchoice);
 
+//     }
+//     if(humanScore>computerScore){
+//     return('You win')}
+//     else if(computerScore>humanScore){
+//         return("You lose")
+//     }
+//     else{
+//         return("Draw!!")
+//     }
+// }
+
+let rock= document.querySelector("#rock")
+let paper= document.querySelector("#paper")
+let scissor= document.querySelector("#scissor")
+let yourScore= document.querySelector(".you")
+let compScore= document.querySelector(".comp")
+
+rock.addEventListener("click",()=>{
+    humanchoice='rock'
+    getComputerChoice();
+    decide(humanchoice,computerchoice);
+    yourScore.innerText="YOUR SCORE:"+humanScore;
+    compScore.innerText="COMPUTER SCORE:"+computerScore;
+});
+paper.addEventListener("click",()=>{
+    humanchoice='paper'
+    getComputerChoice();
+    decide(humanchoice,computerchoice);
+    yourScore.innerText="YOUR SCORE:"+humanScore;
+    compScore.innerText="COMPUTER SCORE:"+computerScore;
+   
+});
+scissor.addEventListener("click",()=>{
+    humanchoice='scissor'
+    getComputerChoice();
+    decide(humanchoice,computerchoice);
+    yourScore.innerText="YOUR SCORE:"+humanScore;
+    compScore.innerText="COMPUTER SCORE:"+computerScore;
+});
+function check(){
+ if(humanScore>computerScore&& humanScore+computerScore==5){
+    alert('You win')}
+else if(computerScore>humanScore&& humanScore+computerScore==5){
+        alert("You lose")
     }
-    if(humanScore>computerScore){
-    return('You win')}
-    else if(computerScore>humanScore){
-        return("You lose")
-    }
-    else{
-        return("Draw!!")
-    }
-}
-console.log(playGame())
+else if(computerScore==humanScore&& humanScore+computerScore==5){
+        alert("Draw!!")
+    }}
+
+    
